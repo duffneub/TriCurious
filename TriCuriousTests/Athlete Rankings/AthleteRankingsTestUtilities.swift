@@ -11,20 +11,33 @@
 import Foundation
 
 extension RankingListing {
-    static var fake: RankingListing {
-        .init(category: "Category", division: "Division", rankings: [.fake])
+
+    static func fake(
+        category: String = "Category",
+        division: String = "Division",
+        rankings: [Athlete] = [ Athlete.fake() ]
+    ) -> RankingListing {
+        self.init(category: category, division: division, rankings: rankings)
     }
 }
 
 extension Athlete {
-    fileprivate static var fake: Athlete {
-        .init(
-            firstName: "John",
-            lastName: "Appleseed",
-            headshot: URL(fileURLWithPath: "/path/to/headshot"),
-            country: "Country",
-            countryFlag: URL(fileURLWithPath: "/path/to/flag"),
-            currentRank: 2,
-            currentPointsTotal: 72.27)
+    static func fake(
+        firstName: String = "John",
+        lastName: String = "Appleseed",
+        headshot: URL = URL(fileURLWithPath: "/path/to/headshot"),
+        country: String = "Country",
+        countryFlag: URL = URL(fileURLWithPath: "/path/to/flag"),
+        currentRank: UInt = 2,
+        currentPointsTotal: Double = 72.27
+    ) -> Athlete {
+        self.init(
+            firstName: firstName,
+            lastName: lastName,
+            headshot: headshot,
+            country: country,
+            countryFlag: countryFlag,
+            currentRank: currentRank,
+            currentPointsTotal: currentPointsTotal)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  AthleteRankingsServiceTests.swift
+//  DefaultAthleteRankingsInteractorTests.swift
 //  TriCuriousTests
 //
 //  Created by Duff Neubauer on 2/28/20.
@@ -11,16 +11,16 @@
 import Combine
 import XCTest
 
-class AthleteRankingsServiceTests: XCTestCase {
+class DefaultAthleteRankingsInteractorTests: XCTestCase {
     func testCurrentRankings() {
-        let expectedOutput: [RankingListing] = [.fake]
-        let subject = AthleteRankingsService(store: MockAthleteRankingsStore(.init(expectedOutput)))
+        let expectedOutput: [RankingListing] = [.fake()]
+        let subject = DefaultAthleteRankingsInteractor(store: MockAthleteRankingsStore(.init(expectedOutput)))
 
         subject.currentRankings().assertFinished(expectedOutput)
     }
 
     func testCurrentRankingsWithStoreFailureShouldFail() {
-        let subject = AthleteRankingsService(store: MockAthleteRankingsStore(.init(dummyError)))
+        let subject = DefaultAthleteRankingsInteractor(store: MockAthleteRankingsStore(.init(dummyError)))
 
         subject.currentRankings().assertFailure(dummyError)
     }

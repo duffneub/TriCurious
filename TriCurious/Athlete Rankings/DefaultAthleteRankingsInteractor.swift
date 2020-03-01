@@ -1,5 +1,5 @@
 //
-//  AthleteRankingsService.swift
+//  DefaultAthleteRankingsInteractor.swift
 //  TriCurious
 //
 //  Created by Duff Neubauer on 2/28/20.
@@ -13,7 +13,11 @@ protocol AthleteRankingsStore {
     func currentRankings() -> AnyPublisher<[RankingListing], Error>
 }
 
-struct AthleteRankingsService {
+protocol AthleteRankingsInteractor {
+    func currentRankings() -> AnyPublisher<[RankingListing], Error>
+}
+
+struct DefaultAthleteRankingsInteractor {
     var store: AthleteRankingsStore
     
     /// Fetch current athlete rankings

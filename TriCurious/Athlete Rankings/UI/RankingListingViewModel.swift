@@ -18,7 +18,7 @@ protocol AthleteViewModel {
     var fullName: String { get }
 }
 
-extension Array : RankingListingViewModel where Element == RankingListing{
+extension Array : RankingListingViewModel where Element == Ranking{
     var numberOfRankingCategories: Int { count }
 
     func titleForRankingCategory(at index: Int) -> String {

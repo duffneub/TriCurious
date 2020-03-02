@@ -13,7 +13,7 @@ import XCTest
 
 class AthleteRankingsPresenterTests: XCTestCase {
     func testLoadCurrentRankings() {
-        let listing = RankingListing.fake(category: "A REALLY COOL category", rankings: [
+        let listing = Rankings.fake(category: "A REALLY COOL category", rankings: [
             .fake(firstName: "Jane", lastName: "Appleseed")
         ])
 
@@ -41,13 +41,13 @@ class AthleteRankingsPresenterTests: XCTestCase {
 }
 
 struct MockAthleteRankingsInteractor : AthleteRankingsInteractor {
-    var currentRankingsResult: Result<[RankingListing], Error>.Publisher
+    var currentRankingsResult: Result<[Rankings], Error>.Publisher
 
-    init(_ currentRankingsResult: Result<[RankingListing], Error>.Publisher) {
+    init(_ currentRankingsResult: Result<[Rankings], Error>.Publisher) {
         self.currentRankingsResult = currentRankingsResult
     }
 
-    func currentRankings() -> AnyPublisher<[RankingListing], Error> {
+    func loadCurrentRankings() -> AnyPublisher<[Rankings], Error> {
         currentRankingsResult.eraseToAnyPublisher()
     }
 }

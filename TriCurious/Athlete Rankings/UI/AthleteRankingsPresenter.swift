@@ -18,6 +18,6 @@ struct AthleteRankingsPresenter {
     }
 
     func loadCurrentRankings() -> AnyPublisher<RankingListingViewModel, Error> {
-        interactor.currentRankings().map { $0 as RankingListingViewModel } .eraseToAnyPublisher()
+        interactor.loadCurrentRankings().map { $0 as RankingListingViewModel } .eraseToAnyPublisher()
     }
 }

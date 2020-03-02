@@ -10,13 +10,13 @@
 
 import Foundation
 
-extension RankingListing {
+extension Rankings {
 
     static func fake(
         category: String = "Category",
         division: String = "Division",
         rankings: [Athlete] = [ Athlete.fake() ]
-    ) -> RankingListing {
+    ) -> Rankings {
         self.init(category: category, division: division, rankings: rankings)
     }
 }

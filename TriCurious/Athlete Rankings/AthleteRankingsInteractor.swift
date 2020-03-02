@@ -10,18 +10,17 @@ import Foundation
 import Combine
 
 protocol AthleteRankingsStore {
-    func currentRankings() -> AnyPublisher<[RankingListing], Error>
+    func loadCurrentRankings() -> AnyPublisher<[Ranking], Error>
 }
 
 protocol AthleteRankingsInteractor {
-    func currentRankings() -> AnyPublisher<[RankingListing], Error>
+    func loadCurrentRankings() -> AnyPublisher<[Ranking], Error>
 }
 
 struct DefaultAthleteRankingsInteractor {
     var store: AthleteRankingsStore
-    
-    /// Fetch current athlete rankings
-    func currentRankings() -> AnyPublisher<[RankingListing], Error> {
-        store.currentRankings()
+
+    func loadCurrentRankings() -> AnyPublisher<[Ranking], Error> {
+        store.loadCurrentRankings()
     }
 }

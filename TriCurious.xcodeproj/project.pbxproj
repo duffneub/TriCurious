@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		172119F8240CBF2300710AFE /* TriathlonOrg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172119F7240CBF2300710AFE /* TriathlonOrg.swift */; };
 		173744CD240B468400EB3827 /* AthleteRankingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173744CB240B468400EB3827 /* AthleteRankingsViewController.swift */; };
 		173744CE240B468400EB3827 /* AthleteRankingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 173744CC240B468400EB3827 /* AthleteRankingsViewController.xib */; };
 		174E2219240A2972008463B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E2218240A2972008463B1 /* AppDelegate.swift */; };
@@ -15,12 +16,11 @@
 		174E2222240A2973008463B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 174E2221240A2973008463B1 /* Assets.xcassets */; };
 		174E2225240A2973008463B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 174E2223240A2973008463B1 /* LaunchScreen.storyboard */; };
 		174E2230240A2973008463B1 /* TriCuriousTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E222F240A2973008463B1 /* TriCuriousTests.swift */; };
-		174E223C240A29F6008463B1 /* DefaultAthleteRankingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E223B240A29F6008463B1 /* DefaultAthleteRankingsInteractor.swift */; };
+		174E223C240A29F6008463B1 /* AthleteRankingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E223B240A29F6008463B1 /* AthleteRankingsInteractor.swift */; };
 		174E2241240A3668008463B1 /* DefaultAthleteRankingsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E2240240A3668008463B1 /* DefaultAthleteRankingsInteractorTests.swift */; };
 		174E2243240A3C41008463B1 /* TestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E2242240A3C41008463B1 /* TestUtilities.swift */; };
 		174E2245240AE774008463B1 /* AthleteRankingsTestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E2244240AE774008463B1 /* AthleteRankingsTestUtilities.swift */; };
-		174E2247240AE9A7008463B1 /* RankingListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E2246240AE9A7008463B1 /* RankingListing.swift */; };
-		174E2249240AE9BF008463B1 /* Athlete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E2248240AE9BF008463B1 /* Athlete.swift */; };
+		174E2247240AE9A7008463B1 /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E2246240AE9A7008463B1 /* Ranking.swift */; };
 		17C41CA1240B605C00050656 /* AthleteRankingsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41CA0240B605C00050656 /* AthleteRankingsPresenterTests.swift */; };
 		17C41CA4240C3C8700050656 /* AthleteRankingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41CA3240C3C8700050656 /* AthleteRankingsPresenter.swift */; };
 		17C41CA6240C3CAE00050656 /* RankingListingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41CA5240C3CAE00050656 /* RankingListingViewModel.swift */; };
@@ -37,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		172119F7240CBF2300710AFE /* TriathlonOrg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriathlonOrg.swift; sourceTree = "<group>"; };
 		173744CB240B468400EB3827 /* AthleteRankingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteRankingsViewController.swift; sourceTree = "<group>"; };
 		173744CC240B468400EB3827 /* AthleteRankingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AthleteRankingsViewController.xib; sourceTree = "<group>"; };
 		174E2215240A2972008463B1 /* TriCurious.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TriCurious.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,12 +50,11 @@
 		174E222B240A2973008463B1 /* TriCuriousTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TriCuriousTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		174E222F240A2973008463B1 /* TriCuriousTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriCuriousTests.swift; sourceTree = "<group>"; };
 		174E2231240A2973008463B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		174E223B240A29F6008463B1 /* DefaultAthleteRankingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAthleteRankingsInteractor.swift; sourceTree = "<group>"; };
+		174E223B240A29F6008463B1 /* AthleteRankingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteRankingsInteractor.swift; sourceTree = "<group>"; };
 		174E2240240A3668008463B1 /* DefaultAthleteRankingsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAthleteRankingsInteractorTests.swift; sourceTree = "<group>"; };
 		174E2242240A3C41008463B1 /* TestUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtilities.swift; sourceTree = "<group>"; };
 		174E2244240AE774008463B1 /* AthleteRankingsTestUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteRankingsTestUtilities.swift; sourceTree = "<group>"; };
-		174E2246240AE9A7008463B1 /* RankingListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingListing.swift; sourceTree = "<group>"; };
-		174E2248240AE9BF008463B1 /* Athlete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Athlete.swift; sourceTree = "<group>"; };
+		174E2246240AE9A7008463B1 /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
 		17C41CA0240B605C00050656 /* AthleteRankingsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteRankingsPresenterTests.swift; sourceTree = "<group>"; };
 		17C41CA3240C3C8700050656 /* AthleteRankingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteRankingsPresenter.swift; sourceTree = "<group>"; };
 		17C41CA5240C3CAE00050656 /* RankingListingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingListingViewModel.swift; sourceTree = "<group>"; };
@@ -78,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		172119F6240CBF0B00710AFE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				172119F7240CBF2300710AFE /* TriathlonOrg.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		174E220C240A2972008463B1 = {
 			isa = PBXGroup;
 			children = (
@@ -124,9 +132,9 @@
 		174E223A240A298A008463B1 /* Athlete Rankings */ = {
 			isa = PBXGroup;
 			children = (
-				174E223B240A29F6008463B1 /* DefaultAthleteRankingsInteractor.swift */,
-				174E2246240AE9A7008463B1 /* RankingListing.swift */,
-				174E2248240AE9BF008463B1 /* Athlete.swift */,
+				174E223B240A29F6008463B1 /* AthleteRankingsInteractor.swift */,
+				174E2246240AE9A7008463B1 /* Ranking.swift */,
+				172119F6240CBF0B00710AFE /* Network */,
 				17C41CA2240C3C6A00050656 /* UI */,
 			);
 			path = "Athlete Rankings";
@@ -254,14 +262,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				174E223C240A29F6008463B1 /* DefaultAthleteRankingsInteractor.swift in Sources */,
-				174E2249240AE9BF008463B1 /* Athlete.swift in Sources */,
+				174E223C240A29F6008463B1 /* AthleteRankingsInteractor.swift in Sources */,
 				174E221D240A2972008463B1 /* ViewController.swift in Sources */,
 				173744CD240B468400EB3827 /* AthleteRankingsViewController.swift in Sources */,
-				174E2247240AE9A7008463B1 /* RankingListing.swift in Sources */,
+				174E2247240AE9A7008463B1 /* Ranking.swift in Sources */,
 				17C41CA4240C3C8700050656 /* AthleteRankingsPresenter.swift in Sources */,
 				17C41CA6240C3CAE00050656 /* RankingListingViewModel.swift in Sources */,
 				174E2219240A2972008463B1 /* AppDelegate.swift in Sources */,
+				172119F8240CBF2300710AFE /* TriathlonOrg.swift in Sources */,
 				174E221B240A2972008463B1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,22 +12,8 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var cancellable: AnyCancellable?
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-
-        cancellable = TriathlonOrg().loadCurrentRankings().sink(receiveCompletion: { completion in
-            switch completion {
-            case .finished:
-                print("Finished")
-            case let .failure(error):
-                print("Error: \(error)")
-            }
-        }) { rankingsList in
-//            print(rankingsList)
-        }
-
         return true
     }
 

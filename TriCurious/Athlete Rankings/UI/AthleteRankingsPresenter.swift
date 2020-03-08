@@ -8,16 +8,25 @@
 
 import Combine
 import Foundation
+import UIKit
 
 struct AthleteRankingsPresenter {
     private var interactor: AthleteRankingsInteractor
-    private var viewModel: RankingListingViewModel?
 
     init(interactor: AthleteRankingsInteractor) {
         self.interactor = interactor
     }
 
-    func loadCurrentRankings() -> AnyPublisher<RankingListingViewModel, Error> {
-        interactor.loadCurrentRankings().map { $0 as RankingListingViewModel } .eraseToAnyPublisher()
+    func currentRankings() -> AnyPublisher<RankingViewModel?, Never> {
+        interactor.currentRankings()
+            .map { AthleteViewControllerViewModel(rankings: $0, interactor: self.interactor) }
+            .map { $0 as RankingViewModel? }
+            .replaceError(with: nil)
+            .receive(on: RunLoop.main)
+            .eraseToAnyPublisher()
+    }
+
+    private func display(_ error: Error) {
+
     }
 }

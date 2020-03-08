@@ -14,13 +14,21 @@ class AthleteRankingsViewController : UIViewController {
     var presenter: AthleteRankingsPresenter?
 
     private var loadRankingsCancellable: AnyCancellable?
-    var viewModel: RankingListingViewModel?
+    var viewModel: RankingViewModel? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadRankingsCancellable = presenter?.loadCurrentRankings()
-            .assertNoFailure()
-            .sink { self.viewModel = $0 }
+
+        tableView.register(
+            .init(nibName: "AthleteTableViewCell", bundle: nil),
+            forCellReuseIdentifier: "AthleteCell")
+        tableView.rowHeight = AthleteTableViewCell.height
+
+        loadRankingsCancellable = presenter?.currentRankings().assign(to: \.viewModel, on: self)
     }
 }
 
@@ -30,7 +38,8 @@ extension AthleteRankingsViewController : UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3 // Always displays top 3 athletes
+        // Display the top 3 ranks at most
+        min(3, viewModel?.numbersOfRanks(ofRankingAt: section) ?? 0)
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -38,12 +47,8 @@ extension AthleteRankingsViewController : UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
-        }
-
-        cell?.textLabel?.text = viewModel?.nameOfAthlete(
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AthleteCell") as! AthleteTableViewCell
+        cell.viewModel = viewModel?.athlete(
             rankIndex: indexPath.row, categoryIndex: indexPath.section)
 
         return cell

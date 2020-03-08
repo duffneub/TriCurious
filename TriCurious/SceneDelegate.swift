@@ -20,7 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
 
+        let interactor = DefaultAthleteRankingsInteractor(store: TriathlonOrg())
+        let presenter = AthleteRankingsPresenter(interactor: interactor)
         let rootVC = AthleteRankingsViewController()
+        rootVC.presenter = presenter
+
         window?.rootViewController = rootVC
 
         window?.makeKeyAndVisible()

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		172119F8240CBF2300710AFE /* TriathlonOrg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172119F7240CBF2300710AFE /* TriathlonOrg.swift */; };
+		172119FB240CC1F800710AFE /* AthleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172119F9240CC1F800710AFE /* AthleteTableViewCell.swift */; };
+		172119FC240CC1F800710AFE /* AthleteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 172119FA240CC1F800710AFE /* AthleteTableViewCell.xib */; };
 		173744CD240B468400EB3827 /* AthleteRankingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173744CB240B468400EB3827 /* AthleteRankingsViewController.swift */; };
 		173744CE240B468400EB3827 /* AthleteRankingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 173744CC240B468400EB3827 /* AthleteRankingsViewController.xib */; };
 		174E2219240A2972008463B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E2218240A2972008463B1 /* AppDelegate.swift */; };
@@ -23,7 +25,7 @@
 		174E2247240AE9A7008463B1 /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E2246240AE9A7008463B1 /* Ranking.swift */; };
 		17C41CA1240B605C00050656 /* AthleteRankingsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41CA0240B605C00050656 /* AthleteRankingsPresenterTests.swift */; };
 		17C41CA4240C3C8700050656 /* AthleteRankingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41CA3240C3C8700050656 /* AthleteRankingsPresenter.swift */; };
-		17C41CA6240C3CAE00050656 /* RankingListingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41CA5240C3CAE00050656 /* RankingListingViewModel.swift */; };
+		17C41CA6240C3CAE00050656 /* RankingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41CA5240C3CAE00050656 /* RankingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 
 /* Begin PBXFileReference section */
 		172119F7240CBF2300710AFE /* TriathlonOrg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriathlonOrg.swift; sourceTree = "<group>"; };
+		172119F9240CC1F800710AFE /* AthleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteTableViewCell.swift; sourceTree = "<group>"; };
+		172119FA240CC1F800710AFE /* AthleteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AthleteTableViewCell.xib; sourceTree = "<group>"; };
 		173744CB240B468400EB3827 /* AthleteRankingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteRankingsViewController.swift; sourceTree = "<group>"; };
 		173744CC240B468400EB3827 /* AthleteRankingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AthleteRankingsViewController.xib; sourceTree = "<group>"; };
 		174E2215240A2972008463B1 /* TriCurious.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TriCurious.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,7 +61,7 @@
 		174E2246240AE9A7008463B1 /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
 		17C41CA0240B605C00050656 /* AthleteRankingsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteRankingsPresenterTests.swift; sourceTree = "<group>"; };
 		17C41CA3240C3C8700050656 /* AthleteRankingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteRankingsPresenter.swift; sourceTree = "<group>"; };
-		17C41CA5240C3CAE00050656 /* RankingListingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingListingViewModel.swift; sourceTree = "<group>"; };
+		17C41CA5240C3CAE00050656 /* RankingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,8 +159,10 @@
 			children = (
 				173744CB240B468400EB3827 /* AthleteRankingsViewController.swift */,
 				173744CC240B468400EB3827 /* AthleteRankingsViewController.xib */,
+				172119F9240CC1F800710AFE /* AthleteTableViewCell.swift */,
+				172119FA240CC1F800710AFE /* AthleteTableViewCell.xib */,
 				17C41CA3240C3C8700050656 /* AthleteRankingsPresenter.swift */,
-				17C41CA5240C3CAE00050656 /* RankingListingViewModel.swift */,
+				17C41CA5240C3CAE00050656 /* RankingViewModel.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -245,6 +251,7 @@
 				174E2225240A2973008463B1 /* LaunchScreen.storyboard in Resources */,
 				174E2222240A2973008463B1 /* Assets.xcassets in Resources */,
 				173744CE240B468400EB3827 /* AthleteRankingsViewController.xib in Resources */,
+				172119FC240CC1F800710AFE /* AthleteTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,10 +274,11 @@
 				173744CD240B468400EB3827 /* AthleteRankingsViewController.swift in Sources */,
 				174E2247240AE9A7008463B1 /* Ranking.swift in Sources */,
 				17C41CA4240C3C8700050656 /* AthleteRankingsPresenter.swift in Sources */,
-				17C41CA6240C3CAE00050656 /* RankingListingViewModel.swift in Sources */,
+				17C41CA6240C3CAE00050656 /* RankingViewModel.swift in Sources */,
 				174E2219240A2972008463B1 /* AppDelegate.swift in Sources */,
 				172119F8240CBF2300710AFE /* TriathlonOrg.swift in Sources */,
 				174E221B240A2972008463B1 /* SceneDelegate.swift in Sources */,
+				172119FB240CC1F800710AFE /* AthleteTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

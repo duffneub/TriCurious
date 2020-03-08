@@ -20,7 +20,7 @@ class AthleteRankingsPresenterTests: XCTestCase {
         let subject = AthleteRankingsPresenter(
             interactor: MockAthleteRankingsInteractor(.init([listing])))
 
-        var viewModel: RankingListingViewModel!
+        var viewModel: Ranking!
         _ = subject.loadCurrentRankings().assertNoFailure().sink { viewModel = $0 }
 
         XCTAssertEqual(1, viewModel.numberOfRankingCategories)
@@ -32,7 +32,7 @@ class AthleteRankingsPresenterTests: XCTestCase {
         let subject = AthleteRankingsPresenter(
             interactor: MockAthleteRankingsInteractor(.init([])))
 
-        var viewModel: RankingListingViewModel!
+        var viewModel: Ranking!
         _ = subject.loadCurrentRankings().assertNoFailure().sink { viewModel = $0 }
 
         XCTAssertEqual("", viewModel.titleForRankingCategory(at: 0))

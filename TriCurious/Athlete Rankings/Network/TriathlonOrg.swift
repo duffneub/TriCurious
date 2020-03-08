@@ -37,7 +37,7 @@ struct TriathlonOrg {
 extension TriathlonOrg : AthleteRankingsStore {
     // TODO: Test
     // TODO: Support Team and Athlete rankings (and remove the "Mixed Replay" filter)
-    func loadCurrentRankings() -> AnyPublisher<[Ranking], Error> {
+    func currentRankings() -> AnyPublisher<[Ranking], Error> {
         rankingsListings()
             .flatMap {
                 $0.filter { $0.program != "Mixed Relay" }.map(self.ranking(listing:))
@@ -47,6 +47,24 @@ extension TriathlonOrg : AthleteRankingsStore {
                     .collect()
                     .eraseToAnyPublisher()
             }.eraseToAnyPublisher()
+    }
+
+    func headshot(for athlete: Athlete) -> AnyPublisher<Data, Error> {
+        guard let url = athlete.headshot else {
+            return Empty<Data, Error>().eraseToAnyPublisher()
+        }
+
+        return session.dataTaskPublisher(for: url)
+            .map { $0.data }
+            .mapError { $0 as Error }
+            .eraseToAnyPublisher()
+    }
+
+    func countryFlag(for athlete: Athlete) -> AnyPublisher<Data, Error> {
+        session.dataTaskPublisher(for: athlete.countryFlag)
+            .map { $0.data }
+            .mapError { $0 as Error }
+            .eraseToAnyPublisher()
     }
 }
 
@@ -106,9 +124,8 @@ extension Athlete : Decodable {
 
         let firstName = try container.decode(String.self, forKey: .firstName)
         let lastName = try container.decode(String.self, forKey: .lastName)
-        let headshot = (try container.decode(String?.self, forKey: .headshot))?
-            .addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)
-            .map { URL(string: $0) } ?? nil
+        let headshotRaw = try container.decode(String?.self, forKey: .headshot)
+        let headshot = headshotRaw.map { URL(string: $0) } ?? nil
         let country = try container.decode(String.self, forKey: .country)
         let countryFlag = try container.decode(URL.self, forKey: .countryFlag)
         let currentRank = try container.decode(UInt.self, forKey: .currentRank)

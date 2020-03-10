@@ -1,5 +1,5 @@
 //
-//  DefaultAthleteRankingsInteractor.swift
+//  DefaultRankingsListInteractor.swift
 //  TriCurious
 //
 //  Created by Duff Neubauer on 2/28/20.
@@ -9,22 +9,22 @@
 import Foundation
 import Combine
 
-protocol AthleteRankingsStore {
-    func currentRankings() -> AnyPublisher<[Ranking], Error>
+protocol RankingsListStore {
+    func currentRankings() -> AnyPublisher<[RankingListing], Error>
     func headshot(for athlete: Athlete) -> AnyPublisher<Data, Error>
     func countryFlag(for athlete: Athlete) -> AnyPublisher<Data, Error>
 }
 
-protocol AthleteRankingsInteractor {
-    func currentRankings() -> AnyPublisher<[Ranking], Error>
+protocol RankingsListInteractor {
+    func currentRankings() -> AnyPublisher<[RankingListing], Error>
     func headshot(for athlete: Athlete) -> AnyPublisher<Data, Error>
     func countryFlag(for athlete: Athlete) -> AnyPublisher<Data, Error>
 }
 
-struct DefaultAthleteRankingsInteractor : AthleteRankingsInteractor {
-    var store: AthleteRankingsStore
+struct DefaultRankingsListInteractor : RankingsListInteractor {
+    var store: RankingsListStore
 
-    func currentRankings() -> AnyPublisher<[Ranking], Error> {
+    func currentRankings() -> AnyPublisher<[RankingListing], Error> {
         store.currentRankings()
     }
 

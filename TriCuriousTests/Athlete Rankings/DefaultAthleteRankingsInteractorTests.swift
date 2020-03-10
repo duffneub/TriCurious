@@ -14,13 +14,13 @@ import XCTest
 class DefaultAthleteRankingsInteractorTests: XCTestCase {
     func testLoadCurrentRankings() {
         let expectedOutput: [Rankings] = [.fake()]
-        let subject = DefaultAthleteRankingsInteractor(store: MockAthleteRankingsStore(.init(expectedOutput)))
+        let subject = DefaultRankingsListInteractor(store: MockAthleteRankingsStore(.init(expectedOutput)))
 
         subject.loadCurrentRankings().assertFinished(expectedOutput)
     }
 
     func testLoadCurrentRankingsWithStoreFailureShouldFail() {
-        let subject = DefaultAthleteRankingsInteractor(store: MockAthleteRankingsStore(.init(dummyError)))
+        let subject = DefaultRankingsListInteractor(store: MockAthleteRankingsStore(.init(dummyError)))
 
         subject.loadCurrentRankings().assertFailure(dummyError)
     }
@@ -29,7 +29,7 @@ class DefaultAthleteRankingsInteractorTests: XCTestCase {
 
 // MARK: - MockAthleteRankingsStore
 
-struct MockAthleteRankingsStore : AthleteRankingsStore {
+struct MockAthleteRankingsStore : RankingsListStore {
     var currentRankingsResponse: Result<[Rankings], Error>.Publisher
 
     init(_ currentRankingsResponse: Result<[Rankings], Error>.Publisher) {

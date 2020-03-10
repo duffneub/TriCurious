@@ -16,7 +16,7 @@ struct TriathlonOrg {
         fetch(path: "rankings")
     }
 
-    fileprivate func ranking(listing: RankingsListing) -> AnyPublisher<Ranking, Error> {
+    fileprivate func ranking(listing: RankingsListing) -> AnyPublisher<RankingListing, Error> {
         fetch(path: "rankings/\(listing.id)")
     }
 
@@ -34,10 +34,10 @@ struct TriathlonOrg {
     }
 }
 
-extension TriathlonOrg : AthleteRankingsStore {
+extension TriathlonOrg : RankingsListStore {
     // TODO: Test
     // TODO: Support Team and Athlete rankings (and remove the "Mixed Replay" filter)
-    func currentRankings() -> AnyPublisher<[Ranking], Error> {
+    func currentRankings() -> AnyPublisher<[RankingListing], Error> {
         rankingsListings()
             .flatMap {
                 $0.filter { $0.program != "Mixed Relay" }.map(self.ranking(listing:))
@@ -90,7 +90,7 @@ struct RankingsListing : Decodable {
 
 // MARK: - Core Models + Decodable
 
-extension Ranking : Decodable {
+extension RankingListing : Decodable {
     enum CodingKeys : String, CodingKey {
         case category = "ranking_cat_name"
         case division = "ranking_name"
@@ -102,9 +102,26 @@ extension Ranking : Decodable {
 
         let category = try container.decode(String.self, forKey: .category)
         let division = try container.decode(String.self, forKey: .division)
-        let rankings = try container.decode([Athlete].self, forKey: .rankings)
+        let rankings = try container.decode([Ranking].self, forKey: .rankings)
 
         self.init(category: category, division: division, rankings: rankings)
+    }
+}
+
+extension Ranking : Decodable {
+    enum CodingKeys : String, CodingKey {
+        case rank
+        case pointsTotal = "total"
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        let rank = try container.decode(UInt.self, forKey: .rank)
+        let pointsTotal = try container.decode(Double.self, forKey: .pointsTotal)
+        let athlete = try Athlete(from: decoder)
+
+        self.init(rank: rank, pointsTotal: pointsTotal, athlete: athlete)
     }
 }
 
@@ -115,8 +132,6 @@ extension Athlete : Decodable {
         case headshot = "athlete_profile_image"
         case country = "athlete_country_name"
         case countryFlag = "athlete_flag"
-        case currentRank = "rank"
-        case currentPointsTotal = "total"
     }
 
     init(from decoder: Decoder) throws {
@@ -128,16 +143,12 @@ extension Athlete : Decodable {
         let headshot = headshotRaw.map { URL(string: $0) } ?? nil
         let country = try container.decode(String.self, forKey: .country)
         let countryFlag = try container.decode(URL.self, forKey: .countryFlag)
-        let currentRank = try container.decode(UInt.self, forKey: .currentRank)
-        let currentPointsTotal = try container.decode(Double.self, forKey: .currentPointsTotal)
 
         self.init(
             firstName: firstName,
             lastName: lastName,
             headshot: headshot,
             country: country,
-            countryFlag: countryFlag,
-            currentRank: currentRank,
-            currentPointsTotal: currentPointsTotal)
+            countryFlag: countryFlag)
     }
 }

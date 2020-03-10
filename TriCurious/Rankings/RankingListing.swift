@@ -1,5 +1,5 @@
 //
-//  Ranking.swift
+//  RankingListing.swift
 //  TriCurious
 //
 //  Created by Duff Neubauer on 2/29/20.
@@ -8,10 +8,18 @@
 
 import Foundation
 
-struct Ranking {
+struct RankingListing {
     var category: String
     var division: String
-    var rankings: [Athlete]
+    var rankings: [Ranking]
+}
+
+extension RankingListing : Equatable {}
+
+struct Ranking {
+    var rank: UInt
+    var pointsTotal: Double
+    var athlete: Athlete
 }
 
 extension Ranking : Equatable {}
@@ -22,8 +30,6 @@ struct Athlete {
     var headshot: URL?
     var country: String
     var countryFlag: URL
-    var currentRank: UInt
-    var currentPointsTotal: Double
 }
 
 extension Athlete : Equatable {}

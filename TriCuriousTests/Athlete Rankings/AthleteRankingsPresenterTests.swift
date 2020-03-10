@@ -17,10 +17,10 @@ class AthleteRankingsPresenterTests: XCTestCase {
             .fake(firstName: "Jane", lastName: "Appleseed")
         ])
 
-        let subject = AthleteRankingsPresenter(
+        let subject = RankingsListPresenter(
             interactor: MockAthleteRankingsInteractor(.init([listing])))
 
-        var viewModel: Ranking!
+        var viewModel: RankingListing!
         _ = subject.loadCurrentRankings().assertNoFailure().sink { viewModel = $0 }
 
         XCTAssertEqual(1, viewModel.numberOfRankingCategories)
@@ -29,10 +29,10 @@ class AthleteRankingsPresenterTests: XCTestCase {
     }
 
     func testRankingListingViewModelHandlesBadIndex() {
-        let subject = AthleteRankingsPresenter(
+        let subject = RankingsListPresenter(
             interactor: MockAthleteRankingsInteractor(.init([])))
 
-        var viewModel: Ranking!
+        var viewModel: RankingListing!
         _ = subject.loadCurrentRankings().assertNoFailure().sink { viewModel = $0 }
 
         XCTAssertEqual("", viewModel.titleForRankingCategory(at: 0))
@@ -40,7 +40,7 @@ class AthleteRankingsPresenterTests: XCTestCase {
     }
 }
 
-struct MockAthleteRankingsInteractor : AthleteRankingsInteractor {
+struct MockAthleteRankingsInteractor : RankingsListInteractor {
     var currentRankingsResult: Result<[Rankings], Error>.Publisher
 
     init(_ currentRankingsResult: Result<[Rankings], Error>.Publisher) {

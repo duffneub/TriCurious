@@ -1,5 +1,5 @@
 //
-//  AthleteRankingsPresenter.swift
+//  RankingsListPresenter.swift
 //  TriCurious
 //
 //  Created by Duff Neubauer on 3/1/20.
@@ -10,17 +10,17 @@ import Combine
 import Foundation
 import UIKit
 
-struct AthleteRankingsPresenter {
-    private var interactor: AthleteRankingsInteractor
+struct RankingsListPresenter {
+    private var interactor: RankingsListInteractor
 
-    init(interactor: AthleteRankingsInteractor) {
+    init(interactor: RankingsListInteractor) {
         self.interactor = interactor
     }
 
-    func currentRankings() -> AnyPublisher<RankingViewModel?, Never> {
+    func currentRankings() -> AnyPublisher<RankingsListViewModel?, Never> {
         interactor.currentRankings()
-            .map { AthleteViewControllerViewModel(rankings: $0, interactor: self.interactor) }
-            .map { $0 as RankingViewModel? }
+            .map { RankingsListViewModel(listings: $0, interactor: self.interactor) }
+            .map { $0 as RankingsListViewModel? }
             .replaceError(with: nil)
             .receive(on: RunLoop.main)
             .eraseToAnyPublisher()

@@ -1,5 +1,5 @@
 //
-//  AthleteTableViewCell.swift
+//  RankingTableViewCell.swift
 //  TriCurious
 //
 //  Created by Duff Neubauer on 3/1/20.
@@ -9,7 +9,8 @@
 import Combine
 import UIKit
 
-class AthleteTableViewCell: UITableViewCell {
+class RankingTableViewCell: UITableViewCell {
+    static var reuseIdentifier = "RankingTableViewCell"
     static var height: CGFloat = 80
 
     @IBOutlet var rankLabel: UILabel!
@@ -21,15 +22,17 @@ class AthleteTableViewCell: UITableViewCell {
     private var headshotRequest: AnyCancellable?
     private var flagRequest: AnyCancellable?
 
-    var viewModel: AthleteViewModel? {
+    var ranking: RankingViewModel? {
         didSet {
             reset()
 
-            guard let athlete = self.viewModel else { return }
+            guard let ranking = self.ranking else { return }
+            let athlete = ranking.athlete
 
-            rankLabel.attributedText = athlete.currentRankingText
+            rankLabel.attributedText = ranking.rankText
+            pointsLabel.text = ranking.totalPointsText
+
             nameLabel.text = athlete.fullName
-            pointsLabel.text = athlete.currentPointsText
             headshotRequest = athlete.headshot.assign(to: \.image, on: self.headshotImageView)
             flagRequest = athlete.countryFlag.assign(to: \.image, on: self.flagImageView)
         }
@@ -47,11 +50,9 @@ class AthleteTableViewCell: UITableViewCell {
         headshotRequest?.cancel()
 
         rankLabel.text = ""
-        headshotImageView.image = viewModel?.headshotPlaceholder ?? nil
+        headshotImageView.image = ranking?.athlete.headshotPlaceholder ?? nil
         nameLabel.text = ""
         flagImageView.image = nil
         pointsLabel.text = ""
     }
 }
-
-//KEEP WORKING ON LOADING CELLS

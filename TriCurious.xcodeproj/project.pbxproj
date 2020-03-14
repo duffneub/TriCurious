@@ -14,7 +14,6 @@
 		173744CE240B468400EB3827 /* RankingsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 173744CC240B468400EB3827 /* RankingsListViewController.xib */; };
 		174E2219240A2972008463B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E2218240A2972008463B1 /* AppDelegate.swift */; };
 		174E221B240A2972008463B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E221A240A2972008463B1 /* SceneDelegate.swift */; };
-		174E221D240A2972008463B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E221C240A2972008463B1 /* ViewController.swift */; };
 		174E2222240A2973008463B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 174E2221240A2973008463B1 /* Assets.xcassets */; };
 		174E2225240A2973008463B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 174E2223240A2973008463B1 /* LaunchScreen.storyboard */; };
 		174E2230240A2973008463B1 /* TriCuriousTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E222F240A2973008463B1 /* TriCuriousTests.swift */; };
@@ -47,7 +46,6 @@
 		174E2215240A2972008463B1 /* TriCurious.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TriCurious.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		174E2218240A2972008463B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		174E221A240A2972008463B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		174E221C240A2972008463B1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		174E2221240A2973008463B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		174E2224240A2973008463B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		174E2226240A2973008463B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,12 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				174E223A240A298A008463B1 /* Rankings */,
-				174E2218240A2972008463B1 /* AppDelegate.swift */,
-				174E221A240A2972008463B1 /* SceneDelegate.swift */,
-				174E221C240A2972008463B1 /* ViewController.swift */,
-				174E2221240A2973008463B1 /* Assets.xcassets */,
-				174E2223240A2973008463B1 /* LaunchScreen.storyboard */,
-				174E2226240A2973008463B1 /* Info.plist */,
+				177CC3132417559300B502BB /* Application */,
 			);
 			path = TriCurious;
 			sourceTree = "<group>";
@@ -152,6 +145,18 @@
 				17C41CA0240B605C00050656 /* AthleteRankingsPresenterTests.swift */,
 			);
 			path = "Athlete Rankings";
+			sourceTree = "<group>";
+		};
+		177CC3132417559300B502BB /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				174E2218240A2972008463B1 /* AppDelegate.swift */,
+				174E221A240A2972008463B1 /* SceneDelegate.swift */,
+				174E2221240A2973008463B1 /* Assets.xcassets */,
+				174E2223240A2973008463B1 /* LaunchScreen.storyboard */,
+				174E2226240A2973008463B1 /* Info.plist */,
+			);
+			name = Application;
 			sourceTree = "<group>";
 		};
 		17C41CA2240C3C6A00050656 /* Rankings List */ = {
@@ -270,7 +275,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				174E223C240A29F6008463B1 /* RankingsListInteractor.swift in Sources */,
-				174E221D240A2972008463B1 /* ViewController.swift in Sources */,
 				173744CD240B468400EB3827 /* RankingsListViewController.swift in Sources */,
 				174E2247240AE9A7008463B1 /* RankingListing.swift in Sources */,
 				17C41CA4240C3C8700050656 /* RankingsListPresenter.swift in Sources */,

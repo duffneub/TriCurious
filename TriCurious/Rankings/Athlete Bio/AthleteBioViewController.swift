@@ -54,7 +54,7 @@ class AthleteBioViewController: UIViewController {
     }
 
     private func reset() {
-        headshotImageView.image = nil
+        headshotImageView.image = athlete?.headshotPlaceholder
         nameLabel.text = nil
         countryLabel.text = nil
         startsLabel.text = nil

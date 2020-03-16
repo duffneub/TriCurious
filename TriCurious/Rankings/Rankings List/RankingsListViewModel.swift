@@ -13,6 +13,11 @@ struct RankingsListViewModel {
     let listings: [RankingListing]
     let interactor: RankingsListInteractor
 
+    init(listings: [RankingListing], interactor: RankingsListInteractor) {
+        self.listings = listings.sorted()
+        self.interactor = interactor
+    }
+
     var numberOfRankingCategories: Int {
         listings.count
     }

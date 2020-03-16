@@ -13,11 +13,11 @@ class TriathlonOrg {
     let session = URLSession(configuration: .default)
     var c: AnyCancellable?
 
-    fileprivate func rankingsListings() -> AnyPublisher<[RankingsListing], Error> {
+    fileprivate func rankingsListings() -> AnyPublisher<[RankingListing], Error> {
         fetch(path: "rankings")
     }
 
-    fileprivate func ranking(listing: RankingsListing) -> AnyPublisher<RankingListing, Error> {
+    fileprivate func ranking(listing: RankingListing) -> AnyPublisher<RankingListing, Error> {
         fetch(path: "rankings/\(listing.id)")
     }
 
@@ -32,8 +32,9 @@ class TriathlonOrg {
 
         return session
             .dataTaskPublisher(for: request)
-            .map { $0.data }
+            .map { print(String(data: $0.data, encoding: .utf8)!) ; return $0.data }
             .decode(type: Response<T>.self, decoder: JSONDecoder())
+            .mapError { print("Error: \($0)") ; return $0 }
             .map { $0.data }
             .eraseToAnyPublisher()
     }
@@ -45,7 +46,7 @@ extension TriathlonOrg : RankingsListStore {
     func currentRankings() -> AnyPublisher<[RankingListing], Error> {
         rankingsListings()
             .flatMap {
-                $0.filter { $0.program != "Mixed Relay" }.map(self.ranking(listing:))
+                $0.filter { $0.division != "Mixed Relay" }.map(self.ranking(listing:))
                     .publisher
                     .setFailureType(to: Error.self)
                     .flatMap { $0 } // Combine list publishers into single publisher
@@ -87,20 +88,11 @@ extension TriathlonOrg {
 
 extension TriathlonOrg.Response : Decodable where T : Decodable {}
 
-struct RankingsListing : Decodable {
-    let id: Int
-    let program: String
-
-    enum CodingKeys : String, CodingKey {
-        case id = "ranking_id"
-        case program = "ranking_name"
-    }
-}
-
 // MARK: - Core Models + Decodable
 
 extension RankingListing : Decodable {
     enum CodingKeys : String, CodingKey {
+        case id = "ranking_id"
         case category = "ranking_cat_name"
         case division = "ranking_name"
         case rankings
@@ -109,11 +101,15 @@ extension RankingListing : Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        let category = try container.decode(String.self, forKey: .category)
-        let division = try container.decode(String.self, forKey: .division)
-        let rankings = try container.decode([Ranking].self, forKey: .rankings)
+        self.id = try container.decode(UInt.self, forKey: .id)
+        self.category = try container.decode(String.self, forKey: .category)
+        self.division = try container.decode(String.self, forKey: .division)
 
-        self.init(category: category, division: division, rankings: rankings)
+        var rankings: [Ranking] = []
+        if container.contains(.rankings) {
+            rankings = try container.decode([Ranking].self, forKey: .rankings)
+        }
+        self.rankings = rankings
     }
 }
 
@@ -158,7 +154,7 @@ extension Athlete : Decodable {
 
         var biography: String?
         if container.contains(.biography) {
-            biography = try container.decode(String.self, forKey: .biography)
+            biography = try container.decode(String?.self, forKey: .biography)
         }
         self.biography = biography
 

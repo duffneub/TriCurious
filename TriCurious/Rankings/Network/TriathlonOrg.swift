@@ -9,8 +9,9 @@
 import Combine
 import Foundation
 
-struct TriathlonOrg {
+class TriathlonOrg {
     let session = URLSession(configuration: .default)
+    var c: AnyCancellable?
 
     fileprivate func rankingsListings() -> AnyPublisher<[RankingsListing], Error> {
         fetch(path: "rankings")
@@ -20,7 +21,7 @@ struct TriathlonOrg {
         fetch(path: "rankings/\(listing.id)")
     }
 
-    /*fileprivate*/ func athletes(id: UInt) -> AnyPublisher<Athlete, Error> {
+    fileprivate func athletes(id: UInt) -> AnyPublisher<Athlete, Error> {
         fetch(path: "athletes/\(id)")
     }
 
@@ -125,11 +126,9 @@ extension Ranking : Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        let rank = try container.decode(UInt.self, forKey: .rank)
-        let pointsTotal = try container.decode(Double.self, forKey: .pointsTotal)
-        let athlete = try Athlete(from: decoder)
-
-        self.init(rank: rank, pointsTotal: pointsTotal, athlete: athlete)
+        self.rank = try container.decode(UInt.self, forKey: .rank)
+        self.pointsTotal = try container.decode(Double.self, forKey: .pointsTotal)
+        self.athlete = try Athlete(from: decoder)
     }
 }
 
@@ -148,25 +147,26 @@ extension Athlete : Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        let id = try container.decode(UInt.self, forKey: .id)
-        let firstName = try container.decode(String.self, forKey: .firstName)
-        let lastName = try container.decode(String.self, forKey: .lastName)
-        let headshotRaw = try container.decode(String?.self, forKey: .headshot)
-        let headshot = headshotRaw.map { URL(string: $0) } ?? nil
-        let country = try container.decode(String.self, forKey: .country)
-        let countryFlag = try container.decode(URL.self, forKey: .countryFlag)
-        let bio = try container.decode(String?.self, forKey: .biography)
-        let stats = try container.decode(Stats?.self, forKey: .stats)
+        self.id = try container.decode(UInt.self, forKey: .id)
+        self.firstName = try container.decode(String.self, forKey: .firstName)
+        self.lastName = try container.decode(String.self, forKey: .lastName)
+        self.country = try container.decode(String.self, forKey: .country)
+        self.countryFlag = try container.decode(URL.self, forKey: .countryFlag)
 
-        self.init(
-            id: id,
-            firstName: firstName,
-            lastName: lastName,
-            headshot: headshot,
-            country: country,
-            countryFlag: countryFlag,
-            biography: bio,
-            stats: stats)
+        let headshotRaw = try container.decode(String?.self, forKey: .headshot)
+        self.headshot = headshotRaw.map { URL(string: $0) } ?? nil
+
+        var biography: String?
+        if container.contains(.biography) {
+            biography = try container.decode(String.self, forKey: .biography)
+        }
+        self.biography = biography
+
+        var stats: Stats?
+        if container.contains(.stats) {
+            stats = try container.decode(Stats.self, forKey: .stats)
+        }
+        self.stats = stats
     }
 }
 
@@ -181,11 +181,9 @@ extension Athlete.Stats : Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        let starts = try container.decode(UInt.self, forKey: .starts)
-        let finishes = try container.decode(UInt.self, forKey: .finishes)
-        let podiums = try container.decode(UInt.self, forKey: .podiums)
-        let wins = try container.decode(UInt.self, forKey: .wins)
-
-        self.init(starts: starts, finishes: finishes, podiums: podiums, wins: wins)
+        self.starts = try container.decode(UInt.self, forKey: .starts)
+        self.finishes = try container.decode(UInt.self, forKey: .finishes)
+        self.podiums = try container.decode(UInt.self, forKey: .podiums)
+        self.wins = try container.decode(UInt.self, forKey: .wins)
     }
 }

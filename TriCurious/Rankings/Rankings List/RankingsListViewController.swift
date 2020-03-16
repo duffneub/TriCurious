@@ -29,6 +29,7 @@ class RankingsListViewController : UIViewController {
         tableView.rowHeight = RankingTableViewCell.height
 
         loadRankingsCancellable = presenter?.currentRankings().assign(to: \.rankingsList, on: self)
+        title = "Rankings"
     }
 }
 
@@ -56,5 +57,18 @@ extension RankingsListViewController : UITableViewDataSource {
 }
 
 extension RankingsListViewController : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard
+            let cell = tableView.cellForRow(at: indexPath) as? RankingTableViewCell,
+            let athlete = cell.ranking?.athlete
+        else {
+            return
+        }
 
+        presenter?.showDetails(for: athlete)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            tableView.deselectRow(at: indexPath, animated: false)
+        }
+    }
 }

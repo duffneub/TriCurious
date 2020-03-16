@@ -12,7 +12,8 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var cancellable: AnyCancellable?
+
+    private var rankingsRouter: RankingsRouter!
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -22,29 +23,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
 
-        let x = TriathlonOrg()
-        cancellable = x.athletes(id: 47630).receive(on: RunLoop.main).sink(receiveCompletion: { result in
-            print(result)
-        }) { athlete in
-            print(athlete)
-
-            let vc = AthleteBioViewController()
-            vc.athlete = AthleteViewModel(
-                athlete: athlete,
-                interactor: DefaultRankingsListInteractor(store: TriathlonOrg()))
-
-            self.window?.rootViewController = vc
-            self.window?.makeKeyAndVisible()
-        }
-
-//        let interactor = DefaultRankingsListInteractor(store: TriathlonOrg())
-//        let presenter = RankingsListPresenter(interactor: interactor)
-//        let rootVC = RankingsListViewController()
-//        rootVC.presenter = presenter
-//
-//        window?.rootViewController = rootVC
-//
-//        window?.makeKeyAndVisible()
+        rankingsRouter = RankingsRouter()
+        window?.rootViewController = rankingsRouter.rootViewController
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

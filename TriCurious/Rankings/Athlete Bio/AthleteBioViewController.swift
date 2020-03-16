@@ -22,7 +22,7 @@ class AthleteBioViewController: UIViewController {
 
     private var headshotRequest: AnyCancellable?
     private var flagRequest: AnyCancellable?
-    
+
     var athlete: AthleteViewModel? {
         didSet {
             guard self.isViewLoaded else { return }
@@ -34,8 +34,8 @@ class AthleteBioViewController: UIViewController {
         super.viewDidLoad()
 
         headshotImageView.layer.cornerRadius = headshotImageView.frame.height / 2.0
-
         configure()
+        title = athlete?.fullName
     }
 
     private func configure() {

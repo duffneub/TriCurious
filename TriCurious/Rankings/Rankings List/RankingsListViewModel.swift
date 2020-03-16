@@ -99,4 +99,13 @@ struct AthleteViewModel {
             .receive(on: RunLoop.main)
             .eraseToAnyPublisher()
     }
+
+    var countryText: String { athlete.country }
+
+    var startsText: String { athlete.stats.map { "\($0.starts)" } ?? "" }
+    var finishesText: String { athlete.stats.map { "\($0.finishes)" } ?? "" }
+    var podiumsText: String { athlete.stats.map { "\($0.podiums)" } ?? "" }
+    var winsText: String { athlete.stats.map { "\($0.wins)" } ?? "" }
+
+    var biographyText: String { athlete.biography ?? "" }
 }

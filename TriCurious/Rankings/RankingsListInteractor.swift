@@ -13,12 +13,14 @@ protocol RankingsListStore {
     func currentRankings() -> AnyPublisher<[RankingListing], Error>
     func headshot(for athlete: Athlete) -> AnyPublisher<Data, Error>
     func countryFlag(for athlete: Athlete) -> AnyPublisher<Data, Error>
+    func details(for athlete: Athlete) -> AnyPublisher<Athlete, Error>
 }
 
 protocol RankingsListInteractor {
     func currentRankings() -> AnyPublisher<[RankingListing], Error>
     func headshot(for athlete: Athlete) -> AnyPublisher<Data, Error>
     func countryFlag(for athlete: Athlete) -> AnyPublisher<Data, Error>
+    func details(for athlete: Athlete) -> AnyPublisher<Athlete, Error>
 }
 
 struct DefaultRankingsListInteractor : RankingsListInteractor {
@@ -34,5 +36,9 @@ struct DefaultRankingsListInteractor : RankingsListInteractor {
 
     func countryFlag(for athlete: Athlete) -> AnyPublisher<Data, Error> {
         store.countryFlag(for: athlete).retry(3).eraseToAnyPublisher()
+    }
+
+    func details(for athlete: Athlete) -> AnyPublisher<Athlete, Error> {
+        store.details(for: athlete).retry(3).eraseToAnyPublisher()
     }
 }

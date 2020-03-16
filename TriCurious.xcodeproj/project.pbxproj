@@ -12,6 +12,8 @@
 		172119FC240CC1F800710AFE /* RankingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 172119FA240CC1F800710AFE /* RankingTableViewCell.xib */; };
 		173744CD240B468400EB3827 /* RankingsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173744CB240B468400EB3827 /* RankingsListViewController.swift */; };
 		173744CE240B468400EB3827 /* RankingsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 173744CC240B468400EB3827 /* RankingsListViewController.xib */; };
+		1738807D241EFB1D00D05E8B /* AthleteBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1738807B241EFB1D00D05E8B /* AthleteBioViewController.swift */; };
+		17388082241EFB8400D05E8B /* AthleteBioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17388081241EFB8400D05E8B /* AthleteBioViewController.xib */; };
 		174E2219240A2972008463B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E2218240A2972008463B1 /* AppDelegate.swift */; };
 		174E221B240A2972008463B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E221A240A2972008463B1 /* SceneDelegate.swift */; };
 		174E2222240A2973008463B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 174E2221240A2973008463B1 /* Assets.xcassets */; };
@@ -43,6 +45,8 @@
 		172119FA240CC1F800710AFE /* RankingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RankingTableViewCell.xib; sourceTree = "<group>"; };
 		173744CB240B468400EB3827 /* RankingsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsListViewController.swift; sourceTree = "<group>"; };
 		173744CC240B468400EB3827 /* RankingsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RankingsListViewController.xib; sourceTree = "<group>"; };
+		1738807B241EFB1D00D05E8B /* AthleteBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteBioViewController.swift; sourceTree = "<group>"; };
+		17388081241EFB8400D05E8B /* AthleteBioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AthleteBioViewController.xib; sourceTree = "<group>"; };
 		174E2215240A2972008463B1 /* TriCurious.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TriCurious.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		174E2218240A2972008463B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		174E221A240A2972008463B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +90,15 @@
 				172119F7240CBF2300710AFE /* TriathlonOrg.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		1738807A241D54E900D05E8B /* Athlete Bio */ = {
+			isa = PBXGroup;
+			children = (
+				1738807B241EFB1D00D05E8B /* AthleteBioViewController.swift */,
+				17388081241EFB8400D05E8B /* AthleteBioViewController.xib */,
+			);
+			path = "Athlete Bio";
 			sourceTree = "<group>";
 		};
 		174E220C240A2972008463B1 = {
@@ -133,6 +146,7 @@
 				174E2246240AE9A7008463B1 /* RankingListing.swift */,
 				172119F6240CBF0B00710AFE /* Network */,
 				17C41CA2240C3C6A00050656 /* Rankings List */,
+				1738807A241D54E900D05E8B /* Athlete Bio */,
 			);
 			path = Rankings;
 			sourceTree = "<group>";
@@ -253,6 +267,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17388082241EFB8400D05E8B /* AthleteBioViewController.xib in Resources */,
 				174E2225240A2973008463B1 /* LaunchScreen.storyboard in Resources */,
 				174E2222240A2973008463B1 /* Assets.xcassets in Resources */,
 				173744CE240B468400EB3827 /* RankingsListViewController.xib in Resources */,
@@ -277,6 +292,7 @@
 				174E223C240A29F6008463B1 /* RankingsListInteractor.swift in Sources */,
 				173744CD240B468400EB3827 /* RankingsListViewController.swift in Sources */,
 				174E2247240AE9A7008463B1 /* RankingListing.swift in Sources */,
+				1738807D241EFB1D00D05E8B /* AthleteBioViewController.swift in Sources */,
 				17C41CA4240C3C8700050656 /* RankingsListPresenter.swift in Sources */,
 				17C41CA6240C3CAE00050656 /* RankingsListViewModel.swift in Sources */,
 				174E2219240A2972008463B1 /* AppDelegate.swift in Sources */,

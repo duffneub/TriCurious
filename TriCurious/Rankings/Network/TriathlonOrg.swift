@@ -20,6 +20,10 @@ struct TriathlonOrg {
         fetch(path: "rankings/\(listing.id)")
     }
 
+    /*fileprivate*/ func athletes(id: UInt) -> AnyPublisher<Athlete, Error> {
+        fetch(path: "athletes/\(id)")
+    }
+
     private func fetch<T : Decodable>(path: String, type: T.Type = T.self) -> AnyPublisher<T, Error> {
         let base = URL(string: "https://api.triathlon.org/v1/")!
         var request = URLRequest(url: base.appendingPathComponent(path))
@@ -65,6 +69,10 @@ extension TriathlonOrg : RankingsListStore {
             .map { $0.data }
             .mapError { $0 as Error }
             .eraseToAnyPublisher()
+    }
+
+    func details(for athlete: Athlete) -> AnyPublisher<Athlete, Error> {
+        athletes(id: athlete.id)
     }
 }
 
@@ -127,28 +135,57 @@ extension Ranking : Decodable {
 
 extension Athlete : Decodable {
     enum CodingKeys : String, CodingKey {
+        case id = "athlete_id"
         case firstName = "athlete_first"
         case lastName = "athlete_last"
         case headshot = "athlete_profile_image"
         case country = "athlete_country_name"
         case countryFlag = "athlete_flag"
+        case biography = "biography"
+        case stats = "stats"
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
+        let id = try container.decode(UInt.self, forKey: .id)
         let firstName = try container.decode(String.self, forKey: .firstName)
         let lastName = try container.decode(String.self, forKey: .lastName)
         let headshotRaw = try container.decode(String?.self, forKey: .headshot)
         let headshot = headshotRaw.map { URL(string: $0) } ?? nil
         let country = try container.decode(String.self, forKey: .country)
         let countryFlag = try container.decode(URL.self, forKey: .countryFlag)
+        let bio = try container.decode(String?.self, forKey: .biography)
+        let stats = try container.decode(Stats?.self, forKey: .stats)
 
         self.init(
+            id: id,
             firstName: firstName,
             lastName: lastName,
             headshot: headshot,
             country: country,
-            countryFlag: countryFlag)
+            countryFlag: countryFlag,
+            biography: bio,
+            stats: stats)
+    }
+}
+
+extension Athlete.Stats : Decodable {
+    enum CodingKeys : String, CodingKey {
+        case starts = "race_starts"
+        case finishes = "race_finishes"
+        case podiums = "race_podiums"
+        case wins = "race_wins"
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        let starts = try container.decode(UInt.self, forKey: .starts)
+        let finishes = try container.decode(UInt.self, forKey: .finishes)
+        let podiums = try container.decode(UInt.self, forKey: .podiums)
+        let wins = try container.decode(UInt.self, forKey: .wins)
+
+        self.init(starts: starts, finishes: finishes, podiums: podiums, wins: wins)
     }
 }

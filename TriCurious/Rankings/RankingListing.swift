@@ -25,11 +25,24 @@ struct Ranking {
 extension Ranking : Equatable {}
 
 struct Athlete {
+    var id: UInt
     var firstName: String
     var lastName: String
     var headshot: URL?
     var country: String
     var countryFlag: URL
+    var biography: String?
+    var stats: Stats?
+}
+
+extension Athlete {
+    struct Stats {
+        var starts: UInt
+        var finishes: UInt
+        var podiums: UInt
+        var wins: UInt
+    }
 }
 
 extension Athlete : Equatable {}
+extension Athlete.Stats : Equatable {}

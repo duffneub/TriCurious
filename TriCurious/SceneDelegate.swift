@@ -6,11 +6,13 @@
 //  Copyright © 2020 Duff Neubauer. All rights reserved.
 //
 
+import Combine
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var cancellable: AnyCancellable?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -20,14 +22,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
 
-        let interactor = DefaultRankingsListInteractor(store: TriathlonOrg())
-        let presenter = RankingsListPresenter(interactor: interactor)
-        let rootVC = RankingsListViewController()
-        rootVC.presenter = presenter
+        let x = TriathlonOrg()
+        cancellable = x.athletes(id: 47630).receive(on: RunLoop.main).sink(receiveCompletion: { result in
+            print(result)
+        }) { athlete in
+            print(athlete)
 
-        window?.rootViewController = rootVC
+            let vc = AthleteBioViewController()
+            vc.athlete = AthleteViewModel(
+                athlete: athlete,
+                interactor: DefaultRankingsListInteractor(store: TriathlonOrg()))
 
-        window?.makeKeyAndVisible()
+            self.window?.rootViewController = vc
+            self.window?.makeKeyAndVisible()
+        }
+
+//        let interactor = DefaultRankingsListInteractor(store: TriathlonOrg())
+//        let presenter = RankingsListPresenter(interactor: interactor)
+//        let rootVC = RankingsListViewController()
+//        rootVC.presenter = presenter
+//
+//        window?.rootViewController = rootVC
+//
+//        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

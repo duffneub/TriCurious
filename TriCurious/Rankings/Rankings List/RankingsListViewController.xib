@@ -9,6 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RankingsListViewController" customModule="TriCurious" customModuleProvider="target">
             <connections>
+                <outlet property="progressContainerView" destination="2wA-qt-CWv" id="wS3-8h-82F"/>
+                <outlet property="progressView" destination="l6Q-3p-ukk" id="IXO-vs-fgk"/>
                 <outlet property="tableView" destination="H6I-t9-0Er" id="kUK-T8-hbg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,12 +28,45 @@
                         <outlet property="delegate" destination="-1" id="4AW-JG-rS8"/>
                     </connections>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wA-qt-CWv">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updating Rankings..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0co-GI-j3E">
+                            <rect key="frame" x="118" y="244" width="151" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="151" id="Dae-f3-bwu"/>
+                                <constraint firstAttribute="height" constant="20" id="SSf-0a-Iq2"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="l6Q-3p-ukk">
+                            <rect key="frame" x="277" y="244" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="baF-FO-Ruj"/>
+                                <constraint firstAttribute="width" constant="20" id="ru8-il-amE"/>
+                            </constraints>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="0co-GI-j3E" firstAttribute="centerX" secondItem="2wA-qt-CWv" secondAttribute="centerX" constant="-13.5" id="7iq-Wx-DGO"/>
+                        <constraint firstItem="l6Q-3p-ukk" firstAttribute="centerY" secondItem="0co-GI-j3E" secondAttribute="centerY" id="HoZ-d8-V60"/>
+                        <constraint firstItem="l6Q-3p-ukk" firstAttribute="leading" secondItem="0co-GI-j3E" secondAttribute="trailing" constant="8" id="dsc-lz-lja"/>
+                        <constraint firstItem="0co-GI-j3E" firstAttribute="top" secondItem="2wA-qt-CWv" secondAttribute="top" constant="244" id="lPu-9Z-AHh"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="H6I-t9-0Er" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="00K-Yv-JbI"/>
                 <constraint firstItem="H6I-t9-0Er" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="4yz-zP-zJq"/>
+                <constraint firstItem="2wA-qt-CWv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="6Jf-cB-9mg"/>
+                <constraint firstItem="2wA-qt-CWv" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Akn-3c-O8r"/>
                 <constraint firstItem="H6I-t9-0Er" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="keN-JV-k80"/>
+                <constraint firstItem="2wA-qt-CWv" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="tZ9-xO-F2m"/>
+                <constraint firstItem="2wA-qt-CWv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="yGx-oe-8Am"/>
                 <constraint firstItem="H6I-t9-0Er" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="zxH-IS-SX9"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

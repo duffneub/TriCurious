@@ -47,7 +47,6 @@ struct RankingsListPresenter {
         self.interactor = interactor
         self.router = router
     }
-
     func currentRankings() -> AnyPublisher<RankingsListViewModel?, Never> {
         interactor.currentRankings()
             .map { RankingsListViewModel(listings: $0, interactor: self.interactor) }

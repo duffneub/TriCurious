@@ -11,6 +11,10 @@ import UIKit
 
 class RankingsListViewController : UIViewController {
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var progressContainerView: UIView!
+    @IBOutlet var progressView: UIActivityIndicatorView!
+
+
     var presenter: RankingsListPresenter?
 
     private var loadRankingsCancellable: AnyCancellable?
@@ -23,13 +27,34 @@ class RankingsListViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "Rankings"
+
         tableView.register(
             .init(nibName: "RankingTableViewCell", bundle: nil),
             forCellReuseIdentifier: RankingTableViewCell.reuseIdentifier)
         tableView.rowHeight = RankingTableViewCell.height
 
-        loadRankingsCancellable = presenter?.currentRankings().assign(to: \.rankingsList, on: self)
-        title = "Rankings"
+        startProgress()
+        loadRankingsCancellable = presenter?.currentRankings()
+            .sink { rankingsList in
+                self.stopProgress()
+                self.rankingsList = rankingsList
+            }
+    }
+
+    private func startProgress() {
+        progressContainerView.isHidden = false
+        progressView.startAnimating()
+    }
+
+    private func stopProgress() {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.progressContainerView.alpha = 0.0
+        }) { _ in
+            self.progressContainerView.isHidden = true
+            self.progressContainerView.alpha = 1.0
+            self.progressView.stopAnimating()
+        }
     }
 }
 

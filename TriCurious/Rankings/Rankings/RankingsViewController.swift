@@ -26,6 +26,7 @@ class RankingsViewController : UIViewController {
     var viewModel: RankingListingsViewModel! {
         didSet {
             cancellables.forEach { $0.cancel() }
+            cancellables.removeAll()
 
             self.viewModel.$isLoading
                 .receive(on: RunLoop.main)

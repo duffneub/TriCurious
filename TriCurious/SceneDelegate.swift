@@ -9,47 +9,10 @@
 import Combine
 import UIKit
 
-class RankingsModule {
-    private let navVC: UINavigationController
-    private var cancellables: Set<AnyCancellable> = []
-
-    var viewController: UIViewController {
-        return navVC
-    }
-
-    init() {
-        let viewModel = RankingListingsViewModel(TriathlonOrg())
-        let rankingsVC = RankingsViewController()
-        rankingsVC.viewModel = viewModel
-
-        self.navVC = UINavigationController(rootViewController: rankingsVC)
-
-        viewModel.$selectedRanking
-            .receive(on: RunLoop.main)
-            .sink { ranking in
-                guard let ranking = ranking else { return }
-                self.showDetails(for: ranking.athlete)
-            }
-            .store(in: &cancellables)
-    }
-
-    func showDetails(for athlete: AthleteViewModel) {
-//        athlete.fetchDetails()
-
-        let athleteBioVC = AthleteBioViewController()
-        athleteBioVC.viewModel = athlete
-        athleteBioVC.additionalSafeAreaInsets = .init(
-            top: navVC.navigationBar.frame.height, left: 0, bottom: 0, right: 0)
-
-        navVC.pushViewController(athleteBioVC, animated: true)
-    }
-}
-
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    private var rankingsModule: RankingsModule!
-    private var navVC: UINavigationController!
+    var appModule: Module?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -58,8 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
 
-        rankingsModule = RankingsModule()
-        window?.rootViewController = rankingsModule.viewController
+        appModule = AppCoordinator()
+        window?.rootViewController = appModule?.rootViewController
         window?.makeKeyAndVisible()
     }
 

@@ -26,6 +26,14 @@
 		174E2247240AE9A7008463B1 /* RankingListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E2246240AE9A7008463B1 /* RankingListing.swift */; };
 		179FAEB024232F0A0056ECAC /* RankingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179FAEAF24232F0A0056ECAC /* RankingsViewModel.swift */; };
 		179FAEB2242330B20056ECAC /* RankingsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179FAEB1242330B20056ECAC /* RankingsStore.swift */; };
+		179FAEB7242441F80056ECAC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179FAEB6242441F80056ECAC /* AppCoordinator.swift */; };
+		179FAEBA242442BC0056ECAC /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179FAEB8242442BC0056ECAC /* NewsViewController.swift */; };
+		179FAEBB242442BC0056ECAC /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 179FAEB9242442BC0056ECAC /* NewsViewController.xib */; };
+		179FAEBE242442E10056ECAC /* WatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179FAEBC242442E10056ECAC /* WatchViewController.swift */; };
+		179FAEBF242442E10056ECAC /* WatchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 179FAEBD242442E10056ECAC /* WatchViewController.xib */; };
+		179FAEC2242442EC0056ECAC /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179FAEC0242442EC0056ECAC /* EventsViewController.swift */; };
+		179FAEC3242442EC0056ECAC /* EventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 179FAEC1242442EC0056ECAC /* EventsViewController.xib */; };
+		179FAEC52424436E0056ECAC /* RankingsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179FAEC42424436E0056ECAC /* RankingsModule.swift */; };
 		17C41CA1240B605C00050656 /* AthleteRankingsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41CA0240B605C00050656 /* AthleteRankingsPresenterTests.swift */; };
 		17C41CA4240C3C8700050656 /* RankingsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41CA3240C3C8700050656 /* RankingsListPresenter.swift */; };
 		17C41CA6240C3CAE00050656 /* RankingsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41CA5240C3CAE00050656 /* RankingsListViewModel.swift */; };
@@ -65,6 +73,14 @@
 		174E2246240AE9A7008463B1 /* RankingListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingListing.swift; sourceTree = "<group>"; };
 		179FAEAF24232F0A0056ECAC /* RankingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsViewModel.swift; sourceTree = "<group>"; };
 		179FAEB1242330B20056ECAC /* RankingsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsStore.swift; sourceTree = "<group>"; };
+		179FAEB6242441F80056ECAC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		179FAEB8242442BC0056ECAC /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		179FAEB9242442BC0056ECAC /* NewsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsViewController.xib; sourceTree = "<group>"; };
+		179FAEBC242442E10056ECAC /* WatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchViewController.swift; sourceTree = "<group>"; };
+		179FAEBD242442E10056ECAC /* WatchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WatchViewController.xib; sourceTree = "<group>"; };
+		179FAEC0242442EC0056ECAC /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		179FAEC1242442EC0056ECAC /* EventsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsViewController.xib; sourceTree = "<group>"; };
+		179FAEC42424436E0056ECAC /* RankingsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsModule.swift; sourceTree = "<group>"; };
 		17C41CA0240B605C00050656 /* AthleteRankingsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteRankingsPresenterTests.swift; sourceTree = "<group>"; };
 		17C41CA3240C3C8700050656 /* RankingsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsListPresenter.swift; sourceTree = "<group>"; };
 		17C41CA5240C3CAE00050656 /* RankingsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsListViewModel.swift; sourceTree = "<group>"; };
@@ -126,8 +142,16 @@
 		174E2217240A2972008463B1 /* TriCurious */ = {
 			isa = PBXGroup;
 			children = (
+				174E2218240A2972008463B1 /* AppDelegate.swift */,
+				174E221A240A2972008463B1 /* SceneDelegate.swift */,
+				174E2221240A2973008463B1 /* Assets.xcassets */,
+				174E2223240A2973008463B1 /* LaunchScreen.storyboard */,
+				174E2226240A2973008463B1 /* Info.plist */,
+				179FAEB6242441F80056ECAC /* AppCoordinator.swift */,
+				179FAEB3242441110056ECAC /* News */,
+				179FAEB5242441810056ECAC /* Watch */,
+				179FAEB4242441330056ECAC /* Events */,
 				174E223A240A298A008463B1 /* Rankings */,
-				177CC3132417559300B502BB /* Application */,
 			);
 			path = TriCurious;
 			sourceTree = "<group>";
@@ -146,6 +170,7 @@
 		174E223A240A298A008463B1 /* Rankings */ = {
 			isa = PBXGroup;
 			children = (
+				179FAEC42424436E0056ECAC /* RankingsModule.swift */,
 				174E223B240A29F6008463B1 /* RankingsListInteractor.swift */,
 				174E2246240AE9A7008463B1 /* RankingListing.swift */,
 				172119F6240CBF0B00710AFE /* Network */,
@@ -165,16 +190,31 @@
 			path = "Athlete Rankings";
 			sourceTree = "<group>";
 		};
-		177CC3132417559300B502BB /* Application */ = {
+		179FAEB3242441110056ECAC /* News */ = {
 			isa = PBXGroup;
 			children = (
-				174E2218240A2972008463B1 /* AppDelegate.swift */,
-				174E221A240A2972008463B1 /* SceneDelegate.swift */,
-				174E2221240A2973008463B1 /* Assets.xcassets */,
-				174E2223240A2973008463B1 /* LaunchScreen.storyboard */,
-				174E2226240A2973008463B1 /* Info.plist */,
+				179FAEB8242442BC0056ECAC /* NewsViewController.swift */,
+				179FAEB9242442BC0056ECAC /* NewsViewController.xib */,
 			);
-			name = Application;
+			path = News;
+			sourceTree = "<group>";
+		};
+		179FAEB4242441330056ECAC /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				179FAEC0242442EC0056ECAC /* EventsViewController.swift */,
+				179FAEC1242442EC0056ECAC /* EventsViewController.xib */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		179FAEB5242441810056ECAC /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+				179FAEBC242442E10056ECAC /* WatchViewController.swift */,
+				179FAEBD242442E10056ECAC /* WatchViewController.xib */,
+			);
+			path = Watch;
 			sourceTree = "<group>";
 		};
 		17C41CA2240C3C6A00050656 /* Rankings */ = {
@@ -275,9 +315,12 @@
 			files = (
 				17388082241EFB8400D05E8B /* AthleteBioViewController.xib in Resources */,
 				174E2225240A2973008463B1 /* LaunchScreen.storyboard in Resources */,
+				179FAEBF242442E10056ECAC /* WatchViewController.xib in Resources */,
 				174E2222240A2973008463B1 /* Assets.xcassets in Resources */,
 				173744CE240B468400EB3827 /* RankingsViewController.xib in Resources */,
+				179FAEC3242442EC0056ECAC /* EventsViewController.xib in Resources */,
 				172119FC240CC1F800710AFE /* RankingTableViewCell.xib in Resources */,
+				179FAEBB242442BC0056ECAC /* NewsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,15 +339,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				179FAEB024232F0A0056ECAC /* RankingsViewModel.swift in Sources */,
+				179FAEBE242442E10056ECAC /* WatchViewController.swift in Sources */,
 				174E223C240A29F6008463B1 /* RankingsListInteractor.swift in Sources */,
+				179FAEB7242441F80056ECAC /* AppCoordinator.swift in Sources */,
 				173744CD240B468400EB3827 /* RankingsViewController.swift in Sources */,
 				174E2247240AE9A7008463B1 /* RankingListing.swift in Sources */,
 				179FAEB2242330B20056ECAC /* RankingsStore.swift in Sources */,
 				1738807D241EFB1D00D05E8B /* AthleteBioViewController.swift in Sources */,
 				17C41CA4240C3C8700050656 /* RankingsListPresenter.swift in Sources */,
+				179FAEC2242442EC0056ECAC /* EventsViewController.swift in Sources */,
 				17C41CA6240C3CAE00050656 /* RankingsListViewModel.swift in Sources */,
 				174E2219240A2972008463B1 /* AppDelegate.swift in Sources */,
 				172119F8240CBF2300710AFE /* TriathlonOrg.swift in Sources */,
+				179FAEBA242442BC0056ECAC /* NewsViewController.swift in Sources */,
+				179FAEC52424436E0056ECAC /* RankingsModule.swift in Sources */,
 				174E221B240A2972008463B1 /* SceneDelegate.swift in Sources */,
 				172119FB240CC1F800710AFE /* RankingTableViewCell.swift in Sources */,
 			);

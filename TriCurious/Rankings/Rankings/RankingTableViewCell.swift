@@ -28,6 +28,7 @@ class RankingTableViewCell: UITableViewCell {
     var viewModel: RankingViewModel! {
         didSet {
             cancellables.forEach { $0.cancel() }
+            cancellables.removeAll()
 
             rankLabel.attributedText = self.viewModel.rankText
             pointsLabel.text = self.viewModel.totalPointsText

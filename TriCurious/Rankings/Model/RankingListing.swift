@@ -15,36 +15,7 @@ struct RankingListing {
     var rankings: [Ranking]
 }
 
-struct Ranking {
-    var rank: UInt
-    var pointsTotal: Double
-    var athlete: Athlete
-}
-
-struct Athlete {
-    let id: UInt
-    var firstName: String
-    var lastName: String
-    var headshot: URL?
-    var country: String
-    var countryFlag: URL
-    var biography: String?
-    var stats: Stats?
-}
-
-extension Athlete {
-    struct Stats {
-        var starts: UInt
-        var finishes: UInt
-        var podiums: UInt
-        var wins: UInt
-    }
-}
-
 extension RankingListing : Equatable {}
-extension Ranking : Equatable {}
-extension Athlete : Equatable {}
-extension Athlete.Stats : Equatable {}
 
 extension RankingListing : Comparable {
     private var isRegional: Bool {

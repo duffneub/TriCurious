@@ -9,18 +9,31 @@
 import Combine
 import UIKit
 
-class RankingsModule : Module {
+protocol RankingsStore : class {
+    func loadCurrentRankings() -> AnyPublisher<[RankingListing], Error>
+    func headshot(for athlete: Athlete) -> AnyPublisher<Data, Error>
+    func countryFlag(for athlete: Athlete) -> AnyPublisher<Data, Error>
+    func details(for athlete: Athlete) -> AnyPublisher<Athlete, Error>
+}
+
+class RankingsCoordinator : ViewControllerRepresentable {
     private let navVC: UINavigationController
     private var cancellables: Set<AnyCancellable> = []
 
-    var rootViewController: UIViewController { navVC }
+    var viewController: UIViewController { navVC }
 
     init(store: RankingsStore) {
+        self.navVC = UINavigationController()
+
+        let rankings = makeRankingsView(store: store)
+        self.navVC.viewControllers = [rankings]
+    }
+
+    private func makeRankingsView(store: RankingsStore) -> UIViewController {
         let viewModel = RankingListingsViewModel(store)
         let rankingsVC = RankingsViewController()
         rankingsVC.viewModel = viewModel
-
-        self.navVC = UINavigationController(rootViewController: rankingsVC)
+        rankingsVC.title = "Rankings"
 
         viewModel.$selectedRanking
             .receive(on: RunLoop.main)
@@ -29,15 +42,14 @@ class RankingsModule : Module {
                 self.showDetails(for: ranking.athlete)
             }
             .store(in: &cancellables)
+
+        return rankingsVC
     }
 
     func showDetails(for athlete: AthleteViewModel) {
-//        athlete.fetchDetails()
-
         let athleteBioVC = AthleteBioViewController()
         athleteBioVC.viewModel = athlete
-        athleteBioVC.additionalSafeAreaInsets = .init(
-            top: navVC.navigationBar.frame.height, left: 0, bottom: 0, right: 0)
+        athleteBioVC.title = athlete.fullName
 
         navVC.pushViewController(athleteBioVC, animated: true)
     }

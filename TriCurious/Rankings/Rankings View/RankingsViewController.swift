@@ -38,9 +38,14 @@ class RankingsViewController : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = "Rankings"
         viewModel.loadCurrentRankings()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        tableView.indexPathForSelectedRow.map {
+            tableView.deselectRow(at: $0, animated: true)
+        }
     }
 
     private func toggleProgressView(_ isLoading: Bool) {

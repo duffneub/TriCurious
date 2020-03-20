@@ -40,20 +40,7 @@ class TriathlonOrg {
     }
 }
 
-extension TriathlonOrg : RankingsListStore, RankingsStore {
-    // TODO: Test
-    // TODO: Support Team and Athlete rankings (and remove the "Mixed Replay" filter)
-    func currentRankings() -> AnyPublisher<[RankingListing], Error> {
-        rankingsListings()
-            .flatMap {
-                $0.filter { $0.division != "Mixed Relay" }.map(self.ranking(listing:))
-                    .publisher
-                    .setFailureType(to: Error.self)
-                    .flatMap { $0 } // Combine list publishers into single publisher
-                    .collect()
-                    .eraseToAnyPublisher()
-            }.eraseToAnyPublisher()
-    }
+extension TriathlonOrg : RankingsStore {
 
     func loadCurrentRankings() -> AnyPublisher<[RankingListing], Error> {
         rankingsListings()
@@ -68,7 +55,7 @@ extension TriathlonOrg : RankingsListStore, RankingsStore {
     }
 
     func headshot(for athlete: Athlete) -> AnyPublisher<Data, Error> {
-        guard let url = athlete.headshot else {
+        guard let url = athlete.headshotLocation else {
             return Empty<Data, Error>().eraseToAnyPublisher()
         }
 
@@ -79,7 +66,7 @@ extension TriathlonOrg : RankingsListStore, RankingsStore {
     }
 
     func countryFlag(for athlete: Athlete) -> AnyPublisher<Data, Error> {
-        session.dataTaskPublisher(for: athlete.countryFlag)
+        session.dataTaskPublisher(for: athlete.countryFlagLocation)
             .map { $0.data }
             .mapError { $0 as Error }
             .eraseToAnyPublisher()
@@ -159,10 +146,12 @@ extension Athlete : Decodable {
         self.firstName = try container.decode(String.self, forKey: .firstName)
         self.lastName = try container.decode(String.self, forKey: .lastName)
         self.country = try container.decode(String.self, forKey: .country)
-        self.countryFlag = try container.decode(URL.self, forKey: .countryFlag)
+        self.countryFlagLocation = try container.decode(URL.self, forKey: .countryFlag)
+        self.countryFlagData = nil
 
         let headshotRaw = try container.decode(String?.self, forKey: .headshot)
-        self.headshot = headshotRaw.map { URL(string: $0) } ?? nil
+        self.headshotLocation = headshotRaw.map { URL(string: $0) } ?? nil
+        self.headshotData = nil
 
         var biography: String?
         if container.contains(.biography) {

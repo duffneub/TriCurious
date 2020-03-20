@@ -8,54 +8,52 @@
 
 import UIKit
 
-protocol Module {
-    var rootViewController: UIViewController { get }
+protocol ViewControllerRepresentable {
+    var viewController: UIViewController { get }
 }
 
-extension UIViewController : Module {
-    var rootViewController: UIViewController { self }
+extension UIViewController : ViewControllerRepresentable {
+    var viewController: UIViewController { self }
 }
 
-class AppCoordinator {
+class AppCoordinator : ViewControllerRepresentable {
     private var tabBarVC: UITabBarController
+
+    var viewController: UIViewController { tabBarVC }
 
     init() {
         let triathlonStore = TriathlonOrg()
 
-        let rankings = RankingsModule(store: triathlonStore)
-        rankings.rootViewController.tabBarItem = .init(
+        let rankings = RankingsCoordinator(store: triathlonStore)
+        rankings.viewController.tabBarItem = .init(
             title: "Rankings",
             image: UIImage(systemName: "person.3"),
             selectedImage: UIImage(systemName: "person.3.fill"))
 
-        let news: Module = NewsViewController()
-        news.rootViewController.tabBarItem = .init(
+        let news: ViewControllerRepresentable = NewsViewController()
+        news.viewController.tabBarItem = .init(
             title: "News",
             image: UIImage(systemName: "antenna.radiowaves.left.and.right"),
             selectedImage: nil)
 
-        let watch: Module = WatchViewController()
-        watch.rootViewController.tabBarItem = .init(
+        let watch: ViewControllerRepresentable = WatchViewController()
+        watch.viewController.tabBarItem = .init(
             title: "Watch",
             image: UIImage(systemName: "tv"),
             selectedImage: UIImage(systemName: "tv.fill"))
 
-        let events: Module = EventsViewController()
-        events.rootViewController.tabBarItem = .init(
+        let events: ViewControllerRepresentable = EventsViewController()
+        events.viewController.tabBarItem = .init(
             title: "Events",
             image: UIImage(systemName: "calendar"),
             selectedImage: nil)
 
         tabBarVC = UITabBarController()
         tabBarVC.viewControllers = [
-            rankings.rootViewController,
-            news.rootViewController,
-            watch.rootViewController,
-            events.rootViewController
+            rankings.viewController,
+            news.viewController,
+            watch.viewController,
+            events.viewController
         ]
     }
-}
-
-extension AppCoordinator : Module {
-    var rootViewController: UIViewController { tabBarVC }
 }

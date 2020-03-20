@@ -18,10 +18,6 @@
 		174E221B240A2972008463B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E221A240A2972008463B1 /* SceneDelegate.swift */; };
 		174E2222240A2973008463B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 174E2221240A2973008463B1 /* Assets.xcassets */; };
 		174E2225240A2973008463B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 174E2223240A2973008463B1 /* LaunchScreen.storyboard */; };
-		174E2230240A2973008463B1 /* TriCuriousTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E222F240A2973008463B1 /* TriCuriousTests.swift */; };
-		174E2241240A3668008463B1 /* DefaultAthleteRankingsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E2240240A3668008463B1 /* DefaultAthleteRankingsInteractorTests.swift */; };
-		174E2243240A3C41008463B1 /* TestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E2242240A3C41008463B1 /* TestUtilities.swift */; };
-		174E2245240AE774008463B1 /* AthleteRankingsTestUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E2244240AE774008463B1 /* AthleteRankingsTestUtilities.swift */; };
 		174E2247240AE9A7008463B1 /* RankingListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174E2246240AE9A7008463B1 /* RankingListing.swift */; };
 		179FAEB024232F0A0056ECAC /* RankingListingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179FAEAF24232F0A0056ECAC /* RankingListingsViewModel.swift */; };
 		179FAEB7242441F80056ECAC /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179FAEB6242441F80056ECAC /* AppCoordinator.swift */; };
@@ -37,18 +33,7 @@
 		179FAECD242453B10056ECAC /* RankingListingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179FAECC242453B10056ECAC /* RankingListingViewModel.swift */; };
 		179FAECF242454070056ECAC /* RankingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179FAECE242454070056ECAC /* RankingViewModel.swift */; };
 		179FAED12424542A0056ECAC /* AthleteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179FAED02424542A0056ECAC /* AthleteViewModel.swift */; };
-		17C41CA1240B605C00050656 /* AthleteRankingsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C41CA0240B605C00050656 /* AthleteRankingsPresenterTests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		174E222C240A2973008463B1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 174E220D240A2972008463B1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 174E2214240A2972008463B1;
-			remoteInfo = TriCurious;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		172119F7240CBF2300710AFE /* TriathlonOrg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriathlonOrg.swift; sourceTree = "<group>"; };
@@ -64,12 +49,6 @@
 		174E2221240A2973008463B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		174E2224240A2973008463B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		174E2226240A2973008463B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		174E222B240A2973008463B1 /* TriCuriousTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TriCuriousTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		174E222F240A2973008463B1 /* TriCuriousTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriCuriousTests.swift; sourceTree = "<group>"; };
-		174E2231240A2973008463B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		174E2240240A3668008463B1 /* DefaultAthleteRankingsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAthleteRankingsInteractorTests.swift; sourceTree = "<group>"; };
-		174E2242240A3C41008463B1 /* TestUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUtilities.swift; sourceTree = "<group>"; };
-		174E2244240AE774008463B1 /* AthleteRankingsTestUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteRankingsTestUtilities.swift; sourceTree = "<group>"; };
 		174E2246240AE9A7008463B1 /* RankingListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingListing.swift; sourceTree = "<group>"; };
 		179FAEAF24232F0A0056ECAC /* RankingListingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingListingsViewModel.swift; sourceTree = "<group>"; };
 		179FAEB6242441F80056ECAC /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -85,18 +64,10 @@
 		179FAECC242453B10056ECAC /* RankingListingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingListingViewModel.swift; sourceTree = "<group>"; };
 		179FAECE242454070056ECAC /* RankingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewModel.swift; sourceTree = "<group>"; };
 		179FAED02424542A0056ECAC /* AthleteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteViewModel.swift; sourceTree = "<group>"; };
-		17C41CA0240B605C00050656 /* AthleteRankingsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteRankingsPresenterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		174E2212240A2972008463B1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		174E2228240A2973008463B1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -127,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				174E2217240A2972008463B1 /* TriCurious */,
-				174E222E240A2973008463B1 /* TriCuriousTests */,
 				174E2216240A2972008463B1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -136,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				174E2215240A2972008463B1 /* TriCurious.app */,
-				174E222B240A2973008463B1 /* TriCuriousTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -159,17 +128,6 @@
 			path = TriCurious;
 			sourceTree = "<group>";
 		};
-		174E222E240A2973008463B1 /* TriCuriousTests */ = {
-			isa = PBXGroup;
-			children = (
-				174E2242240A3C41008463B1 /* TestUtilities.swift */,
-				174E223D240A362C008463B1 /* Athlete Rankings */,
-				174E222F240A2973008463B1 /* TriCuriousTests.swift */,
-				174E2231240A2973008463B1 /* Info.plist */,
-			);
-			path = TriCuriousTests;
-			sourceTree = "<group>";
-		};
 		174E223A240A298A008463B1 /* Rankings */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,16 +138,6 @@
 				1738807A241D54E900D05E8B /* Athlete Bio View */,
 			);
 			path = Rankings;
-			sourceTree = "<group>";
-		};
-		174E223D240A362C008463B1 /* Athlete Rankings */ = {
-			isa = PBXGroup;
-			children = (
-				174E2244240AE774008463B1 /* AthleteRankingsTestUtilities.swift */,
-				174E2240240A3668008463B1 /* DefaultAthleteRankingsInteractorTests.swift */,
-				17C41CA0240B605C00050656 /* AthleteRankingsPresenterTests.swift */,
-			);
-			path = "Athlete Rankings";
 			sourceTree = "<group>";
 		};
 		179FAEB3242441110056ECAC /* News */ = {
@@ -271,24 +219,6 @@
 			productReference = 174E2215240A2972008463B1 /* TriCurious.app */;
 			productType = "com.apple.product-type.application";
 		};
-		174E222A240A2973008463B1 /* TriCuriousTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 174E2237240A2973008463B1 /* Build configuration list for PBXNativeTarget "TriCuriousTests" */;
-			buildPhases = (
-				174E2227240A2973008463B1 /* Sources */,
-				174E2228240A2973008463B1 /* Frameworks */,
-				174E2229240A2973008463B1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				174E222D240A2973008463B1 /* PBXTargetDependency */,
-			);
-			name = TriCuriousTests;
-			productName = TriCuriousTests;
-			productReference = 174E222B240A2973008463B1 /* TriCuriousTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -301,10 +231,6 @@
 				TargetAttributes = {
 					174E2214240A2972008463B1 = {
 						CreatedOnToolsVersion = 11.3.1;
-					};
-					174E222A240A2973008463B1 = {
-						CreatedOnToolsVersion = 11.3.1;
-						TestTargetID = 174E2214240A2972008463B1;
 					};
 				};
 			};
@@ -322,7 +248,6 @@
 			projectRoot = "";
 			targets = (
 				174E2214240A2972008463B1 /* TriCurious */,
-				174E222A240A2973008463B1 /* TriCuriousTests */,
 			);
 		};
 /* End PBXProject section */
@@ -340,13 +265,6 @@
 				179FAEC3242442EC0056ECAC /* EventsViewController.xib in Resources */,
 				172119FC240CC1F800710AFE /* RankingTableViewCell.xib in Resources */,
 				179FAEBB242442BC0056ECAC /* NewsViewController.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		174E2229240A2973008463B1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,27 +296,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		174E2227240A2973008463B1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				174E2241240A3668008463B1 /* DefaultAthleteRankingsInteractorTests.swift in Sources */,
-				174E2245240AE774008463B1 /* AthleteRankingsTestUtilities.swift in Sources */,
-				174E2230240A2973008463B1 /* TriCuriousTests.swift in Sources */,
-				17C41CA1240B605C00050656 /* AthleteRankingsPresenterTests.swift in Sources */,
-				174E2243240A3C41008463B1 /* TestUtilities.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		174E222D240A2973008463B1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 174E2214240A2972008463B1 /* TriCurious */;
-			targetProxy = 174E222C240A2973008463B1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		174E2223240A2973008463B1 /* LaunchScreen.storyboard */ = {
@@ -560,48 +458,6 @@
 			};
 			name = Release;
 		};
-		174E2238240A2973008463B1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = TriCuriousTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.duffneubauer.TriCuriousTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TriCurious.app/TriCurious";
-			};
-			name = Debug;
-		};
-		174E2239240A2973008463B1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = TriCuriousTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.duffneubauer.TriCuriousTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TriCurious.app/TriCurious";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -619,15 +475,6 @@
 			buildConfigurations = (
 				174E2235240A2973008463B1 /* Debug */,
 				174E2236240A2973008463B1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		174E2237240A2973008463B1 /* Build configuration list for PBXNativeTarget "TriCuriousTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				174E2238240A2973008463B1 /* Debug */,
-				174E2239240A2973008463B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

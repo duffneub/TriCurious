@@ -51,7 +51,12 @@ class AthleteViewModel {
 
     func loadDetails() -> AnyPublisher<AthleteViewModel, Never> {
         store.details(for: athlete)
-            .map { AthleteViewModel($0, store: self.store) }
+            .map {
+                let viewModel = AthleteViewModel($0, store: self.store)
+                viewModel.headshot = self.headshot
+                viewModel.countryFlag = self.countryFlag
+                return viewModel
+            }
             .replaceError(with: self)
             .eraseToAnyPublisher()
     }

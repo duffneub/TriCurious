@@ -17,16 +17,18 @@ protocol RankingsStore : class {
 }
 
 class RankingsCoordinator : ViewControllerRepresentable {
-    private let navVC: UINavigationController
+    private var router: Router!
     private var cancellables: Set<AnyCancellable> = []
 
-    var viewController: UIViewController { navVC }
+    var viewController: UIViewController { router.viewController }
 
     init(store: RankingsStore) {
-        self.navVC = UINavigationController()
-
         let rankings = makeRankingsView(store: store)
-        self.navVC.viewControllers = [rankings]
+        if (UIDevice.current.userInterfaceIdiom == .phone) {
+            self.router = StackRankingsRouter(rootViewController: rankings)
+        } else {
+            self.router = ColumnRankingsRouter(rootViewController: rankings)
+        }
     }
 
     private func makeRankingsView(store: RankingsStore) -> UIViewController {
@@ -51,6 +53,62 @@ class RankingsCoordinator : ViewControllerRepresentable {
         athleteBioVC.viewModel = athlete
         athleteBioVC.title = athlete.fullName
 
-        navVC.pushViewController(athleteBioVC, animated: true)
+        router.showDetailViewController(athleteBioVC, animated: true, sender: self)
+    }
+}
+
+private protocol Router {
+    init(rootViewController: UIViewController)
+    var viewController: UIViewController { get }
+    func showDetailViewController(_ detailVC: UIViewController, animated: Bool, sender: Any?)
+}
+
+private class StackRankingsRouter : Router {
+    private let navVC: UINavigationController
+
+    var viewController: UIViewController { navVC }
+
+    required init(rootViewController: UIViewController) {
+        self.navVC = UINavigationController(rootViewController: rootViewController)
+    }
+
+    func showDetailViewController(_ detailVC: UIViewController, animated: Bool, sender: Any?) {
+        navVC.pushViewController(detailVC, animated: animated)
+    }
+}
+
+private class ColumnRankingsRouter : Router {
+    private let splitVC: UISplitViewController
+    private lazy var placeholderVC: UIViewController = {
+        let placeholderVC = UIViewController()
+        placeholderVC.view = UIView()
+        placeholderVC.view.backgroundColor = UIColor.systemBackground
+
+        let placeholder = UILabel()
+        placeholder.text = "No Athlete Selected."
+        placeholder.font = UIFont.preferredFont(forTextStyle: .caption1)
+        placeholder.textAlignment = .center
+        placeholder.textColor = UIColor.tertiaryLabel
+        placeholder.translatesAutoresizingMaskIntoConstraints = false
+        placeholderVC.view.addSubview(placeholder)
+
+        NSLayoutConstraint.activate([
+            placeholder.centerXAnchor.constraint(equalTo: placeholderVC.view.centerXAnchor),
+            placeholder.centerYAnchor.constraint(equalTo: placeholderVC.view.centerYAnchor),
+        ])
+
+        return placeholderVC
+    }()
+
+    var viewController: UIViewController { splitVC }
+
+    required init(rootViewController: UIViewController) {
+        self.splitVC = UISplitViewController()
+        self.splitVC.preferredDisplayMode = .allVisible
+        self.splitVC.viewControllers = [rootViewController, self.placeholderVC]
+    }
+
+    func showDetailViewController(_ detailVC: UIViewController, animated: Bool, sender: Any?) {
+        splitVC.showDetailViewController(detailVC, sender: sender)
     }
 }

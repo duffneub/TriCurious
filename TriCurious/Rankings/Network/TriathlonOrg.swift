@@ -40,10 +40,22 @@ class TriathlonOrg {
     }
 }
 
-extension TriathlonOrg : RankingsListStore {
+extension TriathlonOrg : RankingsListStore, RankingsStore {
     // TODO: Test
     // TODO: Support Team and Athlete rankings (and remove the "Mixed Replay" filter)
     func currentRankings() -> AnyPublisher<[RankingListing], Error> {
+        rankingsListings()
+            .flatMap {
+                $0.filter { $0.division != "Mixed Relay" }.map(self.ranking(listing:))
+                    .publisher
+                    .setFailureType(to: Error.self)
+                    .flatMap { $0 } // Combine list publishers into single publisher
+                    .collect()
+                    .eraseToAnyPublisher()
+            }.eraseToAnyPublisher()
+    }
+
+    func loadCurrentRankings() -> AnyPublisher<[RankingListing], Error> {
         rankingsListings()
             .flatMap {
                 $0.filter { $0.division != "Mixed Relay" }.map(self.ranking(listing:))
